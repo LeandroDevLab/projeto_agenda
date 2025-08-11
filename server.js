@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const path = require('path'); //caminhos
-const helmet = require('helmet'); //recomendação do Express
 const csrf = require('csurf'); //CSRF TOKENs para os formulários (nenhum site externo poste nos nossos formulários)
 //Configuração das Sessions com o mongoDB e chamando os flashMessage
 const MongoStore = require('connect-mongo'); //salvar na base de dados e não em memória
@@ -44,8 +43,6 @@ const sessionOptions = session({
 // Aplica as configurações de sessão e flash messages
 app.use(sessionOptions);
 app.use(flashMessage());
-
-app.use(helmet());
 
 //configuração do Views
 app.set('views', path.resolve(__dirname, 'src', 'views')); //caminho absoluto
